@@ -419,3 +419,42 @@ for pais in dados:
     linguas = pais.get('languages')
     lista_de_linguas.update(linguas)
 print(f'O numero total de linguagens existentes é {len(lista_de_linguas)}.')
+
+# II.Find the ten most spoken languages from the data.
+dados = paises
+contador_de_linguas = {}
+for pais in dados:
+    linguas = set(pais.get('languages'))
+    for lingua in linguas:
+        if lingua in contador_de_linguas:
+            contador_de_linguas[lingua] += 1
+        else:
+            contador_de_linguas[lingua] = 1
+linguas_ordenadas = sorted(contador_de_linguas.items(), key=lambda item: item[1], reverse=True)
+top_10_linguas = linguas_ordenadas[:10]
+
+print('-Top 10 linguas mais presentes-')
+for lingua, quantidade in top_10_linguas:
+    print(f'{lingua} com {quantidade} paises presentes')
+
+# III.Find the 10 most populated countries in the world
+dados = paises
+
+populacao_por_pais = []
+
+for pais in dados:
+    nome = pais.get('name')
+    populacao = pais.get('population')
+    populacao_por_pais.append((nome, populacao))
+
+populacao_ordenada = sorted(populacao_por_pais, key=lambda item: item[1], reverse=True)
+
+top_10_paises = populacao_ordenada[:10]
+
+print('-Top 10 paises mais populosos-')
+colocacao = 0
+for pais, populacao in top_10_paises:
+    print(f'{colocacao + 1}º {pais} com {(populacao)} pessoas')
+    colocacao = colocacao + 1
+
+# End of exersises today.
