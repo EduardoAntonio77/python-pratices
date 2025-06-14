@@ -427,9 +427,10 @@ for pais in dados:
     linguas = set(pais.get('languages'))
     for lingua in linguas:
         if lingua in contador_de_linguas:
-            contador_de_linguas[lingua] += 1
+            contador_de_linguas[lingua] = contador_de_linguas[lingua] + 1
         else:
             contador_de_linguas[lingua] = 1
+
 linguas_ordenadas = sorted(contador_de_linguas.items(), key=lambda item: item[1], reverse=True)
 top_10_linguas = linguas_ordenadas[:10]
 
